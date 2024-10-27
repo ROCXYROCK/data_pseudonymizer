@@ -1,0 +1,9 @@
+# Verwenden des offiziellen PostgreSQL-Basis-Images
+FROM postgres:latest
+
+
+# Kopieren des SQL-Skripts in das Docker-Image
+COPY ../db/init.sql /docker-entrypoint-initdb.d/
+
+# Portfreigabe für PostgreSQL
+EXPOSE 5432

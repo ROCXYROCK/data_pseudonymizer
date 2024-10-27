@@ -1,0 +1,238 @@
+[database]
+host = "localhost"
+port = "5432"
+name = "medizinische_db"
+user = "postgres"
+
+
+[validator]
+
+krankenkassen = [
+    'AOK', 'TK', 'BKK', 'IKK', 'DAK-Gesundheit', 
+    'KKH', 'BARMER', 'HELA-VERSICHERUNG', 
+    'Union Krankenversicherung', 'SVG', 'Allianz', 
+    'AXA', 'Debeka', 'DKV', 'HUK-COBURG', 
+    'Signal Iduna', 'LVM', 'Concordia', 
+    'Münchener Verein', 'Barmenia'
+]
+
+dosierungseinheit = ["mg", "ml"]
+
+medikamente = [
+    "Aspirin",
+    "Ibuprofen",
+    "Paracetamol",
+    "Amoxicillin",
+    "Metformin",
+    "Atorvastatin",
+    "Omeprazol",
+    "Lisinopril",
+    "Simvastatin",
+    "Levothyroxin",
+    "Gabapentin",
+    "Hydrochlorothiazid",
+    "Citalopram",
+    "Sertralin",
+    "Fluoxetin",
+    "Bupropion",
+    "Escitalopram",
+    "Clopidogrel",
+    "Warfarin",
+    "Amlodipin",
+    "Furosemid",
+    "Alendronat",
+    "Benzonat",
+    "Dexamethason",
+    "Prednison",
+    "Sildenafil",
+    "Tamsulosin",
+    "Ranitidin",
+    "Cetirizin",
+    "Lorazepam",
+    "Clonazepam",
+    "Amitriptylin",
+    "Topiramat",
+    "Mirtazapin",
+    "Venlafaxin",
+    "Diazepam",
+    "Ciprofloxacin",
+    "Levofloxacin",
+    "Metoprolol",
+    "Bisoprolol",
+    "Propranolol",
+    "Zolpidem",
+    "Phenylephrin",
+    "Dextromethorphan",
+    "Guaifenesin",
+    "Loratadin",
+    "Brompheniramin",
+    "Montelukast",
+    "Fluticason",
+    "Beclometason",
+    "Naproxen",
+    "Ketorolac",
+    "Meloxicam",
+    "Dexketoprofen",
+    "Pregabalin",
+    "Duloxetin",
+    "Esomeprazol",
+    "Pramipexol",
+    "Ropinirol",
+    "Donepezil",
+    "Galantamin",
+    "Memantin",
+    "Sertindol",
+    "Quetiapin",
+    "Olanzapin",
+    "Risperidon",
+    "Aripiprazol",
+    "Paliperidon",
+    "Lithium",
+    "Methotrexat",
+    "Azathioprin",
+    "Cyclophosphamid",
+    "Prednisolon",
+    "Tacrolimus",
+    "Sirolimus",
+    "Dapagliflozin",
+    "Empagliflozin",
+    "Canagliflozin",
+    "Sitagliptin",
+    "Linagliptin",
+    "Saxagliptin",
+    "Gliclazid",
+    "Glimepirid",
+    "Glibenclamid",
+    "Insulin Aspart",
+    "Insulin Glargin",
+    "Insulin Detemir",
+    "Insulin Lispro",
+    "Metoclopramid",
+    "Domperidon",
+    "Ondansetron",
+    "Aprepitant",
+    "Palonosetron",
+    "Loperamid",
+    "Rifaximin",
+    "Nystatin",
+    "Fluconazol",
+    "Ketoconazol",
+    "Clotrimazol",
+    "Terbinafin",
+    "Itraconazol",
+    "Voriconazol",
+    "Acyclovir",
+    "Valaciclovir",
+    "Oseltamivir",
+    "Zanamivir",
+    "Abacavir",
+    "Lamivudin",
+    "Tenofovir",
+    "Emtricitabin"
+]
+
+
+[validator.fachgebiete]
+"01" = "Allgemeinmediziner (Hausarzt)"
+"02" = "Arzt/Praktischer Arzt (Hausarzt)"
+"03" = "Internist (Hausarzt)"
+"04" = "Anästhesiologie"
+"05" = "Augenheilkunde"
+"06" = "Chirurgie"
+"07" = "Gefäßchirurgie"
+"08" = "Viszeralchirurgie"
+"09" = "Kinderchirurgie"
+"10" = "Orthopädie"
+"11" = "Unfallchirurgie"
+"12" = "Chirurgie/Rheumatologie"
+"13" = "Plastische Chirurgie"
+"14" = "Thoraxchirurgie"
+"15" = "Frauenheilkunde"
+"16" = "Gynäkologische Endokrinologie und Reproduktionsmedizin"
+"17" = "Gynäkologische Onkologie"
+"18" = "Spezielle Geburtshilfe und Perinatalmedizin"
+"19" = "Hals-Nasen-Ohrenheilkunde"
+"20" = "Phoniatrie"
+"21" = "Geschlechtskrankheiten und Dermatologie"
+"22" = "Humangenetik"
+"23" = "Internist"
+"24" = "Angiologie"
+"25" = "Endokrinologie und Diabetologie"
+"26" = "Gastroenterologie"
+"27" = "Hämatologie und Onkologie"
+"28" = "Kardiologie"
+"29" = "Nephrologie"
+"30" = "Pneumologie"
+"31" = "Innere Medizin/Rheumatologie"
+"32" = "Geriatrie"
+"33" = "Infektologie"
+"34" = "Kinderarzt (Hausarzt)"
+"35" = "Kinder-Hämatologie und -Onkologie (Hausarzt)"
+"36" = "Kinder-Kardiologie (Hausarzt)"
+"37" = "Neonatologie (Hausarzt)"
+"38" = "Neuropädiatrie (Hausarzt)"
+"39" = "Kinder-Pneumologie (Hausarzt)"
+"40" = "Kinderarzt (Facharzt)"
+"41" = "Kinder-Hämatologie und -Onkologie (Facharzt)"
+"42" = "Kinder-Kardiologie (Facharzt)"
+"43" = "Neonatologie (Facharzt)"
+"44" = "Neuropädiatrie (Facharzt)"
+"45" = "Kinder-Pneumologie (Facharzt)"
+"46" = "Kinder- und Jugendmedizin mit Schwerpunkt und Teilnahme an haus- und fachärztlicher Versorgung"
+"47" = "Kinder- und Jugendpsychiatrie und -psychotherapie"
+"48" = "Laboratoriumsmedizin"
+"49" = "Mikrobiologie"
+"50" = "Mund-Kiefer-Gesichtschirurgie"
+"51" = "Nervenheilkunde/Neurologie und Psychiatrie"
+"52" = "Neurochirurgie"
+"53" = "Neurologie"
+"54" = "Nuklearmedizin"
+"55" = "Neuropathologie"
+"56" = "Pathologie"
+"57" = "Physikalische und Rehabilitative Medizin"
+"58" = "Psychiatrie und Psychotherapie"
+"59" = "Forensische Psychiatrie"
+"60" = "Psychosomatische Medizin und Psychotherapie"
+"61" = "Psychotherapeutisch tätiger Arzt"
+"62" = "Radiologie"
+"63" = "Kinderradiologie"
+"64" = "Neuroradiologie"
+"65" = "Strahlentherapie"
+"66" = "Transfusionsmedizin"
+"67" = "Urologie"
+"68" = "Psychologischer Psychotherapeut"
+"69" = "Kinder- und Jugendlichen-Psychotherapeut"
+"70" = "Kassenärztliche Vereinigung"
+"71" = "Kassenärztliche Vereinigung"
+"72" = "Kassenärztliche Vereinigung"
+"73" = "Kassenärztliche Vereinigung"
+"74" = "Kassenärztliche Vereinigung"
+"75" = "Kassenärztliche Vereinigung"
+"76" = "Kassenärztliche Vereinigung"
+"77" = "Kassenärztliche Vereinigung"
+"78" = "Kassenärztliche Vereinigung"
+"79" = "Kassenärztliche Vereinigung"
+"80" = "Kassenärztliche Vereinigung"
+"81" = "Kassenärztliche Vereinigung"
+"82" = "Kassenärztliche Vereinigung"
+"83" = "Kassenärztliche Vereinigung"
+"84" = "Kassenärztliche Vereinigung"
+"85" = "Kassenärztliche Vereinigung"
+"86" = "Kassenärztliche Vereinigung"
+"87" = "Kassenärztliche Vereinigung"
+"88" = "Kassenärztliche Vereinigung"
+"89" = "Kassenärztliche Vereinigung"
+"90" = "Kassenärztliche Vereinigung"
+"91" = "Kassenärztliche Vereinigung"
+"92" = "Kassenärztliche Vereinigung"
+"93" = "Kassenärztliche Vereinigung"
+"94" = "Kassenärztliche Vereinigung"
+"95" = "Kassenärztliche Vereinigung"
+"96" = "Kassenärztliche Vereinigung"
+"97" = "Kassenärztliche Vereinigung"
+"98" = "Kassenärztliche Vereinigung"
+"99" = "sonstige Fachgruppen"
+
+
+
+
