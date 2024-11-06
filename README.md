@@ -40,3 +40,10 @@ In deinem `/data_pseudonymizer`-Verzeichnis:
     docker volume rm $(docker volume ls -q)
 
 > **Pro-Tipp**: _Das war’s!_ Mit diesen drei einfachen Schritten bist du bereit, die Power der Datenverschlüsselung und -pseudonymisierung zu erleben – sicher und DSGVO-konform. 🎉
+
+## 📊 Datenmodell der Datenbank
+Um einen besseren Überblick über die Datenstruktur zu geben, findest du hier das **Datenmodell**, das zeigt, wie die Tabellen miteinander verknüpft sind. Es veranschaulicht die Relationen zwischen Patienten, Ärzten, Terminen und Verschreibungen, sowie die eingesetzten Verschlüsselungen auf bestimmten personenbezogenen Feldern.
+
+> **Hinweis**: Felder, die im `BYTEA`-Format gespeichert sind, sind verschlüsselt und nur mit dem geheimen Schlüssel (`secret_key`) zugänglich.
+
+![Datenmodell der Datenbank](./pic/db.png)
