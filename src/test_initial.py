@@ -1,3 +1,16 @@
+"""
+Dieses Modul enthält die Unittests zur Überprüfung der Daten und deren Verschlüsselung in der Datenbank.
+
+Die Tests decken folgende Aspekte ab:
+- Integrität der Daten in den Tabellen (z. B. Anzahl der Einträge)
+- Korrektheit der Verschlüsselung und Entschlüsselung von sensitiven Daten
+- Logik und Genauigkeit spezifischer SQL-Abfragen zur Datenauswertung
+
+Jeder Test prüft, ob die gespeicherten Informationen die erwarteten Werte und Formate haben,
+und ob die Entschlüsselung durch `pgp_sym_decrypt` den erwarteten Klartext liefert.
+"""
+
+
 import os
 import unittest
 from decimal import Decimal
@@ -35,8 +48,8 @@ class TestDatabaseFilling(unittest.TestCase):
         cls.connection.close()
 
 
-    #_______________________________________________________________________________________________
-    # Testet, ob Tabellen nicht leer sind
+#_______________________________________________________________________________________________
+# Testet, ob Tabellen nicht leer sind
     def check_table_not_empty(self, table_name):
         """Hilfsfunktion, die prüft, ob eine Tabelle Einträge enthält."""
         self.cursor.execute(f"SELECT COUNT(*) FROM {table_name}")
@@ -63,11 +76,8 @@ class TestDatabaseFilling(unittest.TestCase):
         """Testet, ob die 'verschreibung'-Tabelle nicht leer ist."""
         self.check_table_not_empty("verschreibung")
     
-
-
-    
-    #_______________________________________________________________________________________________
-    # Testet die Anzahl an Einträgen in den Tabellen
+#_______________________________________________________________________________________________
+# Testet die Anzahl an Einträgen in den Tabellen
     def check_table_entry_count(self, table_name, expected_count):
         """Hilfsfunktion, die prüft, ob eine Tabelle die erwartete Anzahl an Einträgen enthält."""
         self.cursor.execute(f"SELECT COUNT(*) FROM {table_name}")
@@ -104,7 +114,7 @@ class TestDatabaseFilling(unittest.TestCase):
 
     #_______________________________________________________________________________________________
     # Testet die SQL Queries in den Tabellen
-    # Beispiel-SQL-Abfragen als Unit-Tests
+
     def test_aerzte_und_anzahl_letzte_woche(self):
         """Testet die Anzahl der Termine der Ärzte in der letzten Woche."""
         query = """
@@ -119,7 +129,7 @@ class TestDatabaseFilling(unittest.TestCase):
         self.assertIsInstance(result, list)
         for row in result:
             self.assertEqual(len(row), 3)
-            self.assertIsInstance(row[1], str)  # Name sollte entschlüsselt als String sein
+            self.assertIsInstance(row[1], str)
 
     def test_patienten_mit_videokonsultationen_und_verschreibungen(self):
         """Testet die Zuordnung von Patienten zu Videokonsultationen"""
@@ -134,8 +144,8 @@ class TestDatabaseFilling(unittest.TestCase):
         self.assertIsInstance(result, list)
         for row in result:
             self.assertEqual(len(row), 2)
-            self.assertIsInstance(row[0], str)  # Name als entschlüsselter String
-            self.assertIsInstance(row[1], str)  # Startzeit als entschlüsselter String
+            self.assertIsInstance(row[0], str) 
+            self.assertIsInstance(row[1], str)  
 
     def test_durchschnittliche_dauer_videokonsultationen_pro_arzt(self):
         """Testet die durchschnittliche Dauer der Videokonsultationen pro Arzt."""
@@ -153,8 +163,8 @@ class TestDatabaseFilling(unittest.TestCase):
         self.assertIsInstance(result, list)
         for row in result:
             self.assertEqual(len(row), 2)
-            self.assertIsInstance(row[0], str)  # Entschlüsselter Name als String
-            self.assertIsInstance(row[1], Decimal)  # Durchschnittliche Dauer als float
+            self.assertIsInstance(row[0], str)  
+            self.assertIsInstance(row[1], Decimal) 
 
     def test_patienten_ohne_videokonsultationen(self):
         """Testet die Patienten, die noch keine Videokonsultation hatten."""
@@ -170,9 +180,9 @@ class TestDatabaseFilling(unittest.TestCase):
         self.assertIsInstance(result, list)
         for row in result:
             self.assertEqual(len(row), 2)
-            self.assertIsInstance(row[1], str)  # Entschlüsselter Name als String
+            self.assertIsInstance(row[1], str)
 
-    def test_ärzte_mit_hoechster_anzahl_verschreibungen(self):
+    def test_aerzte_mit_hoechster_anzahl_verschreibungen(self):
         """Testet die Ärzte mit der höchsten Anzahl an Verschreibungen."""
         query = """
         SELECT pgp_sym_decrypt(a.name::bytea, %s) AS name, COUNT(ver.verschreibung_id) AS anzahl_verschreibungen
@@ -189,8 +199,8 @@ class TestDatabaseFilling(unittest.TestCase):
         self.assertIsInstance(result, list)
         for row in result:
             self.assertEqual(len(row), 2)
-            self.assertIsInstance(row[0], str)  # Entschlüsselter Name als String
-            self.assertIsInstance(row[1], int)  # Anzahl Verschreibungen als Integer
+            self.assertIsInstance(row[0], str) 
+            self.assertIsInstance(row[1], int)
 
     def test_patienten_und_naechste_termine(self):
         """Testet die nächsten anstehenden Termine der Patienten."""
@@ -206,8 +216,8 @@ class TestDatabaseFilling(unittest.TestCase):
         self.assertIsInstance(result, list)
         for row in result:
             self.assertEqual(len(row), 2)
-            self.assertIsInstance(row[0], str)  # Entschlüsselter Name als String
-            self.assertIsInstance(row[1], (str, datetime.date) )  # Nächster Termin als Datum/String
+            self.assertIsInstance(row[0], str) 
+            self.assertIsInstance(row[1], (str, datetime.date) )
 
 
 

@@ -1,3 +1,7 @@
+"""
+Enthält die Funktion zur Verbindung zur PostgreSQL-Datenbank
+"""
+
 import time
 import psycopg2
 import toml
@@ -15,7 +19,6 @@ DB_PASSWORD = config['database']['password']
 def connect_to_db():
     """Stellt eine Verbindung zur PostgreSQL-Datenbank her."""
     try:
-        time.sleep(2)
         connection = psycopg2.connect(
             host=DB_HOST,
             port=DB_PORT,
