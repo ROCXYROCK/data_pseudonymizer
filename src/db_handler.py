@@ -2,7 +2,6 @@
 Enthält die Funktion zur Verbindung zur PostgreSQL-Datenbank
 """
 
-import time
 import psycopg2
 import toml
 
