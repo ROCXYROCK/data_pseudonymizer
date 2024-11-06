@@ -1,13 +1,12 @@
+#!/bin/bash
 
-# run Database
-#create image
-sudo docker build -f docker/Database -t medizinische-db .
+# Generiere oder definiere den Secret Key und setze ihn als Umgebungsvariable
+export SECRET_KEY=$(python -c 'import os; print(os.urandom(64).hex())')
 
-#run the container
-sudo docker run -d --name database -p 5432:5432 -e POSTGRES_HOST_AUTH_METHOD=trust medizinische-db
-# alternative dazu: 
-# sudo docker run -d --name database -p 5432:5432 -e POSTGRES_PASSWORD=deinPasswort medizinische-db
+python /app/src/filler.py
 
+
+python /app/src/test_initial.py
 
 
 # enter the Container: sudo docker exec -it database bash

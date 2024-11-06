@@ -1,8 +1,9 @@
 [database]
-host = "localhost"
+host = "database"
 port = "5432"
 name = "medizinische_db"
 user = "postgres"
+password = "postgres"
 
 
 [validator]

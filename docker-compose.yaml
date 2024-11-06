@@ -1,0 +1,19 @@
+services:
+  database:
+    container_name: database  # Hier wird der Containername festgelegt
+    build:
+      context: .
+      dockerfile: docker/Database
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres  # Setzen Sie hier ein Passwort
+
+  app:
+    container_name: app  # Hier wird der Containername für die App festgelegt
+    build:
+      context: .
+      dockerfile: docker/App
+    depends_on:
+      - database  # Sicherstellen, dass die Datenbank zuerst gestartet wird
